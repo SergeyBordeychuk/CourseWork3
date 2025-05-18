@@ -13,7 +13,7 @@ class DBManager:
     def get_companies_and_vacancies_count(self):
         with self.connection.cursor() as cursor:
             cursor.execute(
-                """SELECT employers.name, COUNT(v.id) AS vacancy_count 
+                """SELECT employers.name, COUNT(vacancies.id) AS vacancy_count 
                 from employers
                 LEFT JOIN vacancies USING(employer_id)
                 GROUP BY employers.name;
@@ -42,8 +42,8 @@ class DBManager:
                 from vacancies;
                 """
             )
-        data = cursor.fetchall()
-        return data
+            data = cursor.fetchall()
+            return data
 
 
     def get_vacancies_with_higher_salary(self):
@@ -64,10 +64,10 @@ class DBManager:
                 from vacancies
                 WHERE name LIKE %s;
                 """,
-                (f'%{word}')
+                (f'%{word}%')
             )
-        data = cursor.fetchall()
-        return data
+            data = cursor.fetchall()
+            return data
 
 
     def close_database(self):

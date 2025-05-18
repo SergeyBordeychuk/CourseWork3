@@ -15,6 +15,7 @@ def create_database(params: dict, db_name: str):
 def create_employers_table(params: dict, db_name: str) -> None:
     """
     Функция для создания таблицы сотрудников
+    :rtype: object
     """
     params["database"] = db_name
     with psycopg2.connect(**params) as conn:
