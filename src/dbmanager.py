@@ -64,7 +64,7 @@ class DBManager:
                 from vacancies
                 WHERE name LIKE %s;
                 """,
-                (f'%{word}%')
+                (f'%{word}%',)
             )
             data = cursor.fetchall()
             return data

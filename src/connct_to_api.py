@@ -20,7 +20,7 @@ class EmployerHH(BaseUrl):
         """
         Метод, который подключается к API hh.ru и получает работодателей по ключевому слову.
         """
-        url = f"{self.base_url}employers?text={keyword}"
+        url = f"{self.base_url}employers?text={keyword}&only_with_vacancies=true"
 
         response = requests.get(url)
 
